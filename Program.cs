@@ -142,7 +142,15 @@ namespace TestingWeb
 				}
 				else
 				{
-					Console.WriteLine("  {0}", endPoint.ToString());
+                    try
+                    {
+						Console.WriteLine("  {0} [{1}]", Dns.GetHostEntry(endPoint.ToString().Split(':')[0]).HostName, 
+														 endPoint.ToString().Split(':')[0]);
+                    }
+                    catch
+                    {
+						Console.WriteLine("  {0}", endPoint.ToString().Split(':')[0]);
+					}
 				}
 			}
 		}
